@@ -1,4 +1,5 @@
 import React from 'react';
-import SearchFilter from './src/search-filter';
+import SearchFilterBox from './src/search-filter-box';
 
-React.render(<SearchFilter/>, document.getElementById('search-filter'));
+
+React.render(<SearchFilterBox/>, document.getElementById('search-filter'));

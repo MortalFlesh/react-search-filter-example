@@ -1,12 +1,12 @@
 {
-    "materials": {
-        "1": {
+    "materials": [
+        {
             "id": 1,
             "name": "wood"
         },
-        "2": {
+        {
             "id": 2,
             "name": "metal"
         }
-    }
+    ]
 }
