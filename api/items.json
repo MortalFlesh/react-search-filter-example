@@ -1,0 +1,22 @@
+{
+    "items": [
+        {
+            "id": 1,
+            "name": "Hammer",
+            "type": 1,
+            "material": 1
+        },
+        {
+            "id": 2,
+            "name": "Drill",
+            "type": 1,
+            "material": 2
+        },
+        {
+            "id": 3,
+            "name": "Knife",
+            "type": 2,
+            "material": 2
+        }
+    ]
+}
