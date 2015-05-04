@@ -23,3 +23,15 @@ export function setMaterials(options: array) {
 export function setSelectedMaterial(material: number) {
     dispatcher.dispatch(setSelectedMaterial, material);
 }
+
+export function setIsSearchingType(value: boolean) {
+    dispatcher.dispatch(setIsSearchingType, value);
+}
+
+export function setIsSearchingMaterial(value: boolean) {
+    dispatcher.dispatch(setIsSearchingMaterial, value);
+}
+
+export function performSearch() {
+    dispatcher.dispatch(performSearch);
+}

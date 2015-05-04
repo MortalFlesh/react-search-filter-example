@@ -9,8 +9,6 @@ const OptionRecord = new Record({
 });
 
 export const dispatchToken = dispatcher.register(({action, data}) => {
-    console.log('data:', data);
-
     switch (action) {
         case actions.setTypes:
             let types = new List();
@@ -22,7 +20,7 @@ export const dispatchToken = dispatcher.register(({action, data}) => {
             filtersCursor((filters) => filters.set('types', types));
             break;
 
-        case action.setSelectedType:
+        case actions.setSelectedType:
             filtersCursor((filters) => filters.set('selectedType', data));
             break;
 
@@ -36,14 +34,57 @@ export const dispatchToken = dispatcher.register(({action, data}) => {
             filtersCursor((filters) => filters.set('materials', materials));
             break;
 
-        case action.setSelectedMaterial:
+        case actions.setSelectedMaterial:
             filtersCursor((filters) => filters.set('selectedMaterial', data));
+            break;
+
+        case actions.setIsSearchingType:
+            filtersCursor((filters) => filters.set('isSearchingType', data));
+            break;
+
+        case actions.setIsSearchingMaterial:
+            filtersCursor((filters) => filters.set('isSearchingMaterial', data));
+            break;
+
+        case actions.performSearch:
+            const selectedType = getSelectedType();
+            const selectedMaterial = getSelectedMaterial();
+            let searchUrl = [];
+
+            if (selectedType) {
+                searchUrl.push(`type=${selectedType}`);
+            }
+            if (selectedMaterial) {
+                searchUrl.push(`material=${selectedMaterial}`);
+            }
+
+            setTimeout(() => {
+                window.location.href = '/react/react-search-filter-example/index.php' + (searchUrl ? '?' + searchUrl.join('&') : '');
+            }, 100);
             break;
     }
 });
 
-export const getTypes = () => filtersCursor().get('types');
-export const getSelectedType = () => filtersCursor().get('selectedType');
+export function getTypes() {
+    return filtersCursor().get('types');
+}
 
-export const getMaterials = () => filtersCursor().get('materials');
-export const getSelectedMaterial = () => filtersCursor().get('selectedMaterial');
+export function getSelectedType() {
+    return filtersCursor().get('selectedType');
+}
+
+export function getMaterials() {
+    return filtersCursor().get('materials');
+}
+
+export function getSelectedMaterial() {
+    return filtersCursor().get('selectedMaterial');
+}
+
+export function getIsSearchingType() {
+    return filtersCursor().get('isSearchingType');
+}
+
+export function getIsSearchingMaterial() {
+    return filtersCursor().get('isSearchingMaterial');
+}
