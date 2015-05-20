@@ -5,6 +5,7 @@ import Immutable from 'immutable'
 export default class State extends EventEmitter {
 
     constructor(opt_json) {
+        super();
         this._state = null;
         this._previousState = null;
         this.load(opt_json || {});
